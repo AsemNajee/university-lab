@@ -23,12 +23,12 @@ return [
             ],
             'type' => 'sqlite'
         ],
-        'mysqli' => [
+        'mysql' => [
             'parameters' => [
                 'host'=> 'localhost',
                 'dbname'=> 'test_php',
             ],
-            'type' => 'sqlite',
+            'type' => 'mysql',
             'user' => 'asem',
             'password' => ''
         ]

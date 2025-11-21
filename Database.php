@@ -11,7 +11,11 @@ class Database {
             $dbConfig = $config['database']['sqlite'];
             // the method bellow take an array like ['key'=> 'value', 'key2'=> 'value2'] 
             // and return it as string 'key=value;key2=value2'
-            $dsn = http_build_query($dbConfig['parameters'], '', ';');
+            if($dbConfig['type'] === 'sqlite'){
+                $dsn = base_path($dbConfig['parameters']['path']); // sqlite doesnot have params,, only like this 'sqlite:filename.sqlite'
+            }else{
+                $dsn = http_build_query($dbConfig['parameters'], '', ';');
+            }
             $dsn = $dbConfig['type'] . ':' . $dsn; // add db type like 'mysql:params...'
             $user = $dbConfig['user'];
             $pass = $dbConfig['password'];
